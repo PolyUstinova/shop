@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+header {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #BFBFBF;
+    text-align: center;
+}
+
+#content {
+    margin-left: 20px;
+}
+
+header a {
+    display: block;
+    text-decoration: none;
+    outline: none;
+    transition: .3s ease-in-out;
+}
+
+.menu-name {
+    margin-bottom: 10px;
+}
+
+nav {
+    display: table;
+    margin: 0 auto;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.topmenu:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.topmenu > li {
+    width: 25%;
+    float: left;
+    position: relative;
+}
+
+.topmenu > li > a {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 15px 30px;
+}
+
+.submenu {
+    background: #353535;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 5;
+    width: 180px;
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin :0 0;
+    transition: .5s ease-in-out;
+    margin-top: 10px;
+}
+.submenu a {
+    color: white;
+    text-align: left;
+    padding: 12px 15px;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.submenu li:last-child a {
+    border-bottom: none;
+}
+
+.topmenu > li:hover .submenu {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+.topmenu li a:hover {
+    color: #8D2FF7;
+}
+
+.product-card {
+    border: 1px solid #353535;
+}
+
+.img-product {
+    width: 150px;
+    margin: 0 auto;
+}
+
+.cards{ 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    grid-gap: 45px; 
+    width: 80%; 
+    max-width: 1200px; 
+    margin: 0 auto;
+} 
+ 
+.product-card { 
+    display: flex; 
+    flex-direction: column; 
+    padding: 25px 20px; 
+    border-radius: 10px; 
+}
+
+.price-product, .desc-product {
+    margin-bottom: 7px;
+    margin-top: 7px;
+}
+
+.title-product {
+    margin-bottom: 7px;
+    margin-top: 15px;
+}
+
+#content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
