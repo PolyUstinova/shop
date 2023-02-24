@@ -1,0 +1,41 @@
+@media(max-width: 520px){
+    .product-popup {
+        width: 300px;
+    }
+
+    .main-info {
+        display: block;
+    }
+
+    .photo-pop {
+        width: 250px;
+        margin-top: 20px;
+    }
+
+    .main-txt {
+        margin-left: 0;
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .pop-btn {
+        height: 40px;
+        justify-self: flex-start;
+    }
+}
+
+
+@media(max-width: 300px) {
+    .product-popup {
+        width: 200px;
+    }
+
+   .photo-pop {
+    width: 150px;
+   }
+
+   .main-txt {
+    display: block;
+   }
+}
