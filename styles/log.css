@@ -1,0 +1,122 @@
+#log_out_btn, #view_log, #view_registration, .back, #log_out_btn, .back_log {
+    text-decoration: none;
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.head_block {
+    margin-bottom: 10px;
+}
+
+#view_log, #view_registration {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+#log_out_btn, .header {
+    font-size: 20px;
+}
+
+.form, #reg_or_log {
+    margin-left: 20px;
+}
+
+#log_out_btn {
+    font-weight: 700;
+}
+
+#view_log, #info {
+    margin-right: 20px;
+}
+
+.label, #log_input, #pass_input, .log_btn, .cancel, #content, #repeat_pass_input, #reg_btn, #log_reg_input, #pass_reg_input, #log_reset_input, #new_pass_reset_input, #repeat_pass_reset_input, #reset_btn, #forgot_password, .back_btn {
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+#log_input, #pass_input, #repeat_pass_input, #log_reg_input, #pass_reg_input, #log_reset_input, #new_pass_reset_input, #repeat_pass_reset_input {
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.open-reg-btn, .back_btn {
+    font-weight: 600;
+}
+
+.open-reg-btn {
+    color: #575757;
+    font-weight: 400;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.log_btn {
+    margin-bottom: 10px;
+}
+
+.back, #log_out_btn, .back_log {
+    font-size: 16px;
+    margin-right: 20px;
+}
+
+.head-block {
+    display: flex;
+    align-items: center;
+    width: 40%;
+}
+
+#p_content {
+    width: 250px;
+    text-align: justify;
+}
+
+#img_content {
+    width: 300px;
+}
+
+.btn-form:hover {
+    color: #8D2FF7;
+}
+
+.btn-form {
+    background-color: #353535;
+    color: #FFF;
+    border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.error-block, .error-block-reg {
+    display: none;
+}
+
+.reg-wrapper, .account-wrapper, .log-wrapper {
+    padding-left: 50px;
+}
+
+.log-wrapper, .reg-wrapper, .account-wrapper {
+    display: none;
+}
+
+.error-block-reg {
+    margin-top: 7px;
+}
+
+.log-block, .reg-block {
+    width: 60%;
+}
+
+.log-wrapper, .reg-wrapper {
+    width: 100%;
+}
+
+.back {
+    margin-left: 100px;
+}
+
+.mob {
+    display: none;
+}
