@@ -1,4 +1,4 @@
-#log_out_btn, #view_log, #view_registration, .back, #log_out_btn, .back_log {
+.log-out-btn, #view_log, #view_registration, .back, .back_log {
     text-decoration: none;
     color: #000;
     font-family: 'Montserrat', sans-serif;
@@ -13,15 +13,20 @@
     font-weight: 700;
 }
 
-#log_out_btn, .header {
+.header {
     font-size: 20px;
 }
+
+.log-out-btn {
+    font-size: 18px;
+    font-weight: 600;
+} 
 
 .form, #reg_or_log {
     margin-left: 20px;
 }
 
-#log_out_btn {
+.log-out-btn {
     font-weight: 700;
 }
 
@@ -55,7 +60,7 @@
     margin-bottom: 10px;
 }
 
-.back, #log_out_btn, .back_log {
+.back, .back_log {
     font-size: 16px;
     margin-right: 20px;
 }

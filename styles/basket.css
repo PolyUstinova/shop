@@ -85,3 +85,7 @@
     -webkit-appearance: none;
     margin: 0;
 }
+
+.total-block {
+    display: none;
+}

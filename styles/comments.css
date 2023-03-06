@@ -1,0 +1,20 @@
+.comment-username {
+    font-size: 15px;
+}
+
+.comment-body {
+    font-size: 14px;
+}
+
+.comment-head {
+    font-weight: 600;
+}
+
+.comments-wrapper {
+    overflow: hidden;
+}
+
+.comments-block {
+    overflow-y: scroll;
+    height: 100px;
+}
