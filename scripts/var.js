@@ -29,5 +29,4 @@ let basketAmount = 0;
 let basket = [];
 let flag = false;
 let userIdForBasket = 1;
-
-
+let flagForComment = false;
