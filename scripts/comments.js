@@ -8,33 +8,42 @@ function getComments(product){
 
 function drawComments(comment){
     let commBlock = document.querySelector('.comments-block');
+    let addCommentBlock = document.querySelector('.add-comment');
     let commentList = '';
     let allComments = comment.comments;
     if(allComments.length == 0){
         commBlock.textContent = "There is no comments!"
     } else {
-        if(flagForComment == false){
-            for(let comm of allComments){
-                commentList += `
-                    <div class="comment">
-                        <p class="comment-username">${comm.user.username} wrote:</p>
-                        <p class="comment-body">${comm.body}</p>
+        for(let comm of allComments){
+            let imageSrc = getPhotoUser(comm.user.id);
+            commentList += `
+                <div class="comment">
+                    <img src="${imageSrc}" class="user-photo-comm">
+                    <div>
+                    <p class="comment-username">${comm.user.username}</p>
+                    <p class="comment-body">${comm.body}</p>
                     </div>
-                `;
-            }
+                </div>
+            `;
+        }
+        if(flagForComment == true){
+            addCommentBlock.style.display = "flex";
         } else {
-            for(let comm of allComments){
-                commentList += `
-                    <div class="comment">
-                        <p class="comment-username">${comm.user.username} wrote:</p>
-                        <p class="comment-body">${comm.body}</p>
-                    </div>
-                `;
-            }
-            let commentWrapper = document.querySelector('.comments-wrapper');
-            commentWrapper.innerHTML += `<input type="text"></input>`;
+            addCommentBlock.style.display = "none";
         }
         commBlock.innerHTML = commentList;
     }
+}
+
+function getPhotoUser(userId){
+    let src = '';
+    fetch('https://dummyjson.com/users/' + userId)
+    .then(res => res.json())
+    .then(src = (data) => addPhotoUser(data)); 
+    console.log(src);
+}
+
+function addPhotoUser(user){
+    return user.image;
 }
 
