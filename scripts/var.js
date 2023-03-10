@@ -22,7 +22,9 @@ let backRegBtn = document.querySelector('#back-log');
 let accWrapper = document.querySelector('.account-wrapper');
 let accBlock = document.querySelector('.account-block');
 let profileDesk = document.querySelector('.profile-desk');
-let errorBlock = document.querySelector('.error-block-reg');
+let errorRegBlock = document.querySelector('.error-block-reg');
+let errorBlock = document.querySelector('.error-block');
+let optionsSort = document.querySelector('.sort-list');
 
 let currentCategory = "";
 let basketAmount = 0;

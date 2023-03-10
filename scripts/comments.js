@@ -3,7 +3,7 @@
 function getComments(product){
     fetch('https://dummyjson.com/comments/post/' + product.id)
     .then(res => res.json())
-    .then(json => drawComments(json));
+    .then(data => drawComments(data));
 }
 
 function drawComments(comment){
@@ -15,19 +15,21 @@ function drawComments(comment){
         commBlock.textContent = "There is no comments!"
     } else {
         for(let comm of allComments){
-            let imageSrc = getPhotoUser(comm.user.id);
             commentList += `
                 <div class="comment">
-                    <img src="${imageSrc}" class="user-photo-comm">
-                    <div>
                     <p class="comment-username">${comm.user.username}</p>
                     <p class="comment-body">${comm.body}</p>
-                    </div>
                 </div>
             `;
         }
         if(flagForComment == true){
             addCommentBlock.style.display = "flex";
+            let addCommentBtn = document.querySelector('.add-comment-btn');
+            addCommentBtn.addEventListener('click', function(){
+                let id = comment.comments[0].postId;
+                console.log(id);
+                requestComment(id);
+            });
         } else {
             addCommentBlock.style.display = "none";
         }
@@ -35,15 +37,27 @@ function drawComments(comment){
     }
 }
 
-function getPhotoUser(userId){
-    let src = '';
-    fetch('https://dummyjson.com/users/' + userId)
+function requestComment(prodId){
+    let addCommentInp = document.querySelector('.add-comment-input');
+    fetch('https://dummyjson.com/comments/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            body: addCommentInp.value,
+            postId: prodId,
+            userId: userIdForBasket,
+        })
+    })
     .then(res => res.json())
-    .then(src = (data) => addPhotoUser(data)); 
-    console.log(src);
+    .then(data => addComment(data));
 }
 
-function addPhotoUser(user){
-    return user.image;
+function addComment(responce){
+    let addCommentInp = document.querySelector('.add-comment-input');
+    if(responce.hasOwnProperty('id')){
+        let messageComment = document.querySelector('.comment-added');
+        messageComment.style.display = "block";
+        console.log(responce);
+        addCommentInp.value = '';
+    }
 }
-

@@ -16,7 +16,7 @@ function addToBasket(){
     let idProduct = idP.match(/\d+/);
     fetch('https://dummyjson.com/products/' + idProduct[0])
     .then(res => res.json())
-    .then(res => elemToBasket(res));
+    .then(data => elemToBasket(data));
 
 }
 
@@ -30,12 +30,14 @@ function elemToBasket(product){
         basket.push(basketObj);
         amountInBasket();
     }
+    console.log(basketId);
 }
 
 function checkID(bId){
     for(let key of Object.keys(basket)){
         if(basket[key].id == bId){
             flag = true;
+            break;
         } else {
             flag = false;
         }
@@ -47,6 +49,14 @@ function openBasket(){
     for(let li of categoryList){
         li.classList.remove('active-link');
     }
+    basket.sort(function(a, b){
+        if(a.id > b.id){
+            return 1;
+        } 
+        if(a.id < b.id){
+            return -1;
+        }
+    });
     fetch('https://dummyjson.com/carts/add', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -56,15 +66,16 @@ function openBasket(){
         })
     })
     .then(res => res.json())
-    .then(res => drawBasket(res));
+    .then(data => drawBasket(data));
 }
 
 function deleteProduct(){
-    let id = this.parentElement.parentElement.getAttribute('id').match(/\d+/);
-    basket.splice(basket.indexOf(id), 1);
+    let idFor = this.parentElement.parentElement.getAttribute('id').match(/\d+/);
+    let deleteArr = basket.filter(e => basket.indexOf(e) != idFor);
+    basket = deleteArr;
     openBasket();
     amountInBasket();
-};
+}
 
 function drawBasket(basketArr){
     let basketHTML = '';

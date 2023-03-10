@@ -1,9 +1,38 @@
 "use strict";
 
 function showProduct(data){
-    let allProducts = data.products;
+    sortGoods('', data.products);
+    optionsSort.addEventListener('change', (event) => {
+        let select = event.target.value;
+        sortGoods(select, data.products);
+    });
+}
+
+function sortGoods(sortType, products){
+    let compareElem;
+    if(sortType == 'id' || sortType == ''){
+        compareElem = function (a, b){
+            return a.id-b.id
+        }
+    }
+    if(sortType == 'inexpensive'){
+        compareElem = function (a, b){
+            return a.price-b.price
+        }
+    }
+    if(sortType == 'expensive'){
+        compareElem = function (a, b){
+            return b.price-a.price
+        }
+    }
+    if(sortType == 'top-rated'){
+        compareElem = function (a, b){
+            return b.rating-a.rating
+        }
+    }
+    products.sort(compareElem);
     let productList = "";
-    for (const product of allProducts) {
+    for (const product of products) {
         productList += `
         <div class="product-card" id="card-${product.id}">
             <div class="info">
@@ -17,7 +46,7 @@ function showProduct(data){
         </div>`;
     }
     cards.innerHTML = productList;
-    getIdForPop(allProducts);  
+    getIdForPop(products);  
     let buyButtons = document.querySelectorAll('.buy-btn');
     for(const button of buyButtons){
         button.addEventListener('click', addToBasket);
@@ -30,6 +59,7 @@ function getProductsByCategory(category){
     regWrapper.style.display = 'none';
     accWrapper.style.display = "none";
     logWrapper.style.display = "none";
+    let resp;
     if(category == "all"){
         fetch('https://dummyjson.com/products')
         .then(res => res.json())
@@ -39,6 +69,7 @@ function getProductsByCategory(category){
         .then(res => res.json())
         .then(data => showProduct(data));
     }
+    optionsSort.value = 'id';
 }
 
 function getIdForPop(products){
@@ -86,6 +117,11 @@ function showInfoAboutProduct(product){
             <div class="comments-wrapper">
                 <p class="comment-head">Comments</p>
                 <div class="comments-block"></div>
+                <div class="add-comment">
+                    <input type="text" class="add-comment-input">
+                    <input type="button" value="Add comment" class="add-comment-btn">
+                </div>
+                <p class="comment-added">Your comment successfully added</p>
              </div>
         </div>
     </div>`;
@@ -95,6 +131,11 @@ function showInfoAboutProduct(product){
     let closePopUpBtn = document.querySelector('.close-popup');
     popUpBg.classList.add('active');
     productPopUp.classList.add('active');
+
+    let addCommentBlock = document.querySelector('.add-comment');
+    addCommentBlock.style.display = "none";
+    let messageComment = document.querySelector('.comment-added');
+    messageComment.style.display = "none";
 
     getComments(product);
 
